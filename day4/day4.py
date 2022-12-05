@@ -31,6 +31,15 @@ def comparison(l):
     else:
         return('False')
 
+# Write a function for extension task
+def strict_comparison(m):
+    if int(m[0]) <= int(m[2]):
+        if int(m[1]) >= int(m[2]):
+            return('True')
+    elif int(m[0]) >= int(m[2]):
+        if int(m[3]) >= int(m[0]):
+            return('True')
+
 # Open the data file and load it into the code
 Ids = []
 with open('day4.txt', 'r', encoding='utf-8') as file:
@@ -38,6 +47,6 @@ with open('day4.txt', 'r', encoding='utf-8') as file:
 
 Repetitions = 0
 for r in Ids:
-    if comparison(converter(r)) == 'True':
+    if strict_comparison(converter(r)) == 'True':
         Repetitions = Repetitions + 1
 print(Repetitions)
