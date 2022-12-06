@@ -19,3 +19,38 @@ Stack.append(Stack_7)
 Stack.append(Stack_8)
 Stack.append(Stack_9)
 
+# Write a function that can turn instructions into a list
+def converter(s):
+    instructions = []
+    if s[6] == ' ':
+        number_of_items = int(s[5])
+        starting_stack = int(s[12])
+        ending_stack = int(s[17])
+    else:
+        number_of_items = int(s[5:7])
+        starting_stack = int(s[13])
+        ending_stack = int(s[18])
+    
+    instructions.append(number_of_items)
+    instructions.append(starting_stack)
+    instructions.append(ending_stack)
+
+    return(instructions)
+
+# Write a function that rearrange those items on stack
+def rearrange(a,b):
+    for i in range(b[0]):
+        last_item = a[b[1] - 1][int(len(a[b[1] - 1])) - 1]
+        a[b[1] - 1].remove(last_item)
+        a[b[2] - 1].append(last_item)
+    
+    return(a)
+    
+Instructions = []
+with open('day5.txt', 'r', encoding='utf-8') as file:
+    Instructions = file.readlines()
+
+# Task 1
+for i in range(502):
+    Stack = rearrange(Stack,converter(Instructions[i]))
+print(Stack)
