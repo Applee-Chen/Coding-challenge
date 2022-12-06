@@ -51,6 +51,6 @@ with open('day5.txt', 'r', encoding='utf-8') as file:
     Instructions = file.readlines()
 
 # Task 1
-for i in range(502):
-    Stack = rearrange(Stack,converter(Instructions[i]))
+for r in Instructions:
+    Stack = rearrange(Stack,converter(r))
 print(Stack)
