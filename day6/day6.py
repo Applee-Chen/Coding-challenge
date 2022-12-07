@@ -8,10 +8,22 @@ def check(s):
                 if s[i + 2] != s[i + 3]:
                     return(int(counter + 3))
 
-            
+# Write a function that deals with checking 14 distinct numbers
+def strict_check(a,b,c):
+    if c == 0:
+        return('True')
+    for i in range(c):
+        if a[b] == a[b + i + 1]:
+            return('False')
+    return strict_check(a,(b+1),(c-1))
+
 # Day 6 task 1
 Data = []
 with open('day6.txt', 'r', encoding='utf-8') as file:
     Data = file.read()
 
-print(check(Data))
+count = 0
+for r in range(int(len(Data) - 13)):
+    count = count + 1
+    if strict_check(Data,r,13) == 'True':
+        print(int(count + 13))
