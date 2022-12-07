@@ -41,7 +41,7 @@ def converter(s):
 def rearrange(a,b):
     for i in range(b[0]):
         last_item = a[b[1] - 1][int(len(a[b[1] - 1])) - 1]
-        a[b[1] - 1].remove(last_item)
+        a[b[1] - 1].pop()
         a[b[2] - 1].append(last_item)
     
     return(a)
