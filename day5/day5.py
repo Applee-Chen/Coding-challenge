@@ -1,4 +1,4 @@
-# Write the state of 9 stacks into 9 lists 
+# Write the state of 9 stacks into 9 converted_actionss 
 Stack = []
 Stack_1 = ['S','Z','P','D','L','B','F','C']
 Stack_2 = ['N','V','G','P','H','W','B']

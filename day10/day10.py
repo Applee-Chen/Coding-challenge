@@ -1,55 +1,86 @@
-# addx takes 2 loops to complete and only complete adding after the second loop
+'''
+qaq
+'''
 # noop does nothing and takes 1 loop to complete
 
-# Write a function that can turn day10.txt into a list of integers
-def converter(s):
+def converter(instructions_strings):
+    '''Write a function that can turn day10.txt into a converted_actions of integers'''
     instructions = []
-    for r in s:
-        if r[0:4] == 'addx':
+    for instruction in instructions_strings:
+        if instruction[0:4] == 'addx':
             instructions.append(0)
-            instructions.append(int(r[5:8]))
+            instructions.append(int(instruction[5:8]))
         else:
             instructions.append(0)
-    return(instructions)
+    return instructions
 
-# Write a function that can calculate signal strengths at any position
-def signal_strengths_calculator(i,file):
+def signal_strengths_calculator(position,converted_instructions):
+    '''Write a function that can calculate signal strengths at any position'''
     strength = 1
-    for j in range(i-1):
-        strength = strength + file[j]
-    signal_strength = strength * i
-    return(signal_strength)
+    for j in range(position-1):
+        strength = strength + converted_instructions[j]
+    signal_strength = strength * position
+    return signal_strength
 
 
 # Open the file and load it into the code
-Actions = []
+actions = []
 with open('day10.txt', 'r', encoding='utf-8') as file:
-    Actions = file.readlines()
-List = converter(Actions)
-print(List)
+    actions = file.readlines()
+converted_actions = converter(actions)
+
 # Task 1
-answer1 = signal_strengths_calculator(20,List) + signal_strengths_calculator(60,List) + signal_strengths_calculator(100,List) + signal_strengths_calculator(140,List) + signal_strengths_calculator(180,List) + signal_strengths_calculator(220,List)
+strength_sum = 0
+for k in range(6):
+    strength_sum += signal_strengths_calculator((40*k + 20),converted_actions)
+print(strength_sum)
+
 
 # Task 2
-Image = []
-# Write a function that only return the register X
-def signal_calculator(i,file):
-    X = 1
-    if i>=2:
-        for j in range(i-1):
-            X = X + file[j]
-    return(X)
+images = []
+def signal_calculator(position,file):
+    '''Write a function that only return the register X'''
+    register = 1
+    if position>=2:
+        for j in range(position-1):
+            register += file[j]
+    return register
 
 for k in range(240):
-    if k == (signal_calculator(k+1,List) - 1) or k == signal_calculator(k+1,List) or k == (signal_calculator(k+1,List) + 1):
-        Image.append('#')
+    if k % 40 == (signal_calculator(k+1,converted_actions) - 1) or k == signal_calculator(k+1,converted_actions) or k == (signal_calculator(k+1,converted_actions) + 1):
+        images.append('#')
     else:
-        Image.append('.')
+        images.append('.')
 
-for i,j in enumerate(Image):
+for i,j in enumerate(images):
     print(j,end='')
     if i % 40 == 39:
-        print('\n')
+        print(' ')
 
-for b in range(240):
-    print(signal_calculator(b+1,List),end=' ')
+def parse_input(filename: str):
+    '''Read all lines from the file and return a list of strings'''    
+    return []
+
+
+def task1(input_lines):
+    
+    '''solve task 1'''
+
+    
+    return 'string'
+
+def task2(input_lines):
+    '''solve task 2'''
+
+    return 'string'
+
+
+
+
+if __name__ == '__main__':
+    day10_test_input = parse_input('Day10_test.txt')
+    day10_input = parse_input('Day10.txt')
+    assert task1(day10_test_input) == ''
+    assert task2(day10_test_input) == ''
+    print(task1(day10_input))
+    print(task2(day10_input))
