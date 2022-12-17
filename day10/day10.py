@@ -1,5 +1,5 @@
 '''
-qaq
+Solution for day 10
 '''
 # noop does nothing and takes 1 loop to complete
 
