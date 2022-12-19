@@ -23,5 +23,8 @@ def size_of_directories(command_file,name_of_directory):
                     else:
                         return count
 
-print(size_of_directories(commands,'d'))
+print(size_of_directories(commands,'/'))
+
+def task1(command_file):
+    
 
