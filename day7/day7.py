@@ -1,7 +1,9 @@
 '''Parse input and load the data into both tasks'''
-commands = []
-with open('day7.txt', 'r', encoding='utf-8') as file:
-    commands = file.readlines()
+def parse_input(filename):
+    commands = []
+    with open(filename, 'r', encoding='utf-8') as file:
+        commands = file.readlines()
+    return commands
 
 def size_of_directories(command_file,name_of_directory):
     '''Obtain size of a directory'''
