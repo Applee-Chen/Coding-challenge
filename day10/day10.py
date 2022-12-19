@@ -23,7 +23,6 @@ def task1(instructions_strings,position):
     return signal_strength
    
 
-
 # Task 1
 sum_of_strengths = 0
 for k in range(6):
