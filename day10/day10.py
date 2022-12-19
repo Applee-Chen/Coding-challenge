@@ -1,9 +1,13 @@
 '''
 Solution for day 10
 '''
-# noop does nothing and takes 1 loop to complete
 
-def converter(instructions_strings):
+# Open the data file and load it into our code
+actions = []
+with open('day10.txt', 'r', encoding='utf-8') as file:
+    actions = file.readlines()
+
+def task1(instructions_strings,position):
     '''Write a function that can turn day10.txt into a converted_actions of integers'''
     instructions = []
     for instruction in instructions_strings:
@@ -12,28 +16,19 @@ def converter(instructions_strings):
             instructions.append(int(instruction[5:8]))
         else:
             instructions.append(0)
-    return instructions
-
-def signal_strengths_calculator(position,converted_instructions):
-    '''Write a function that can calculate signal strengths at any position'''
     strength = 1
-    for j in range(position-1):
-        strength = strength + converted_instructions[j]
+    for changes in range(position-1):
+        strength = strength + instructions[changes]
     signal_strength = strength * position
     return signal_strength
+   
 
-
-# Open the file and load it into the code
-actions = []
-with open('day10.txt', 'r', encoding='utf-8') as file:
-    actions = file.readlines()
-converted_actions = converter(actions)
 
 # Task 1
-strength_sum = 0
+sum_of_strengths = 0
 for k in range(6):
-    strength_sum += signal_strengths_calculator((40*k + 20),converted_actions)
-print(strength_sum)
+    sum_of_strengths += task1(actions,(20+6*k))
+print(sum_of_strengths)
 
 
 # Task 2
@@ -60,12 +55,6 @@ for i,j in enumerate(images):
 def parse_input(filename: str):
     '''Read all lines from the file and return a list of strings'''    
     return []
-
-
-def task1(input_lines):
-    
-    '''solve task 1'''
-
     
     return 'string'
 

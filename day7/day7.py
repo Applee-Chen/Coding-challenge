@@ -9,10 +9,9 @@ def size_of_directories(command_file,name_of_directory):
     size_of_commands = int(len(command_file))
     for rows in range(size_of_commands):
         if command_file[rows].split(' ')[1] == 'cd':
-            a = '\n'
-            converted_name_of_directory = name_of_directory+a
+            end_of_string = '\n'
+            converted_name_of_directory = name_of_directory+end_of_string
             if command_file[rows].split(' ')[2] == converted_name_of_directory:
-                '''Loop through the files or firectories in our desired directory'''
                 for subsidiaries in range(size_of_commands):
                     if int(len(command_file[rows+subsidiaries+2].split(' '))) == 2:
                         if command_file[rows+subsidiaries+2].split(' ')[0] != 'dir':
