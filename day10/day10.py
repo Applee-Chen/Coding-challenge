@@ -26,8 +26,9 @@ def task1(instructions_strings,position):
 # Task 1
 sum_of_strengths = 0
 for k in range(6):
-    sum_of_strengths += task1(actions,(20+6*k))
+    sum_of_strengths += task1(actions,(20+40*k))
 print(sum_of_strengths)
+
 
 
 # Task 2
