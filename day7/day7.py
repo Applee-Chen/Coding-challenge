@@ -1,6 +1,6 @@
 '''Parse input and load the data into both tasks'''
 commands = []
-with open('test1.txt', 'r', encoding='utf-8') as file:
+with open('day7.txt', 'r', encoding='utf-8') as file:
     commands = file.readlines()
 
 def size_of_directories(command_file,name_of_directory):
@@ -23,8 +23,29 @@ def size_of_directories(command_file,name_of_directory):
                     else:
                         return count
 
+def task1(command_file):
+    '''identify all directories and write them into a list'''
+    sum_of_required_directories = 0
+    list_of_directories = []
+    size_of_file = len(command_file)
+    for rows in range(size_of_file):
+        if (command_file[rows].split(' '))[0] == 'dir':
+            directory_name = ((command_file[rows].split(' '))[1])[:-1]
+            list_of_directories.append(directory_name)
+    number_of_directories = len(list_of_directories)
+    for directory in range(number_of_directories):
+        if size_of_directories(command_file,list_of_directories[directory]) <= 100000:
+            sum_of_required_directories = sum_of_required_directories + size_of_directories(command_file,list_of_directories[directory])
+    return sum_of_required_directories
+
+print(task1(commands))
 print(size_of_directories(commands,'/'))
 
-def task1(command_file):
-    
+
+
+
+
+
+
+
 
