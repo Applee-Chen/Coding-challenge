@@ -14,15 +14,14 @@ def size_of_directories(command_file,name_of_directory):
             if command_file[rows].split(' ')[2] == converted_name_of_directory:
                 '''Loop through the files or firectories in our desired directory'''
                 for subsidiaries in range(size_of_commands):
-                    if command_file[rows+subsidiaries+1].split(' ')[0] != '$':
-                        if command_file[rows+subsidiaries+1].split(' ')[0] != 'dir':
-                            count = count + int(command_file[rows+subsidiaries+1].split(' ')[0])
+                    if int(len(command_file[rows+subsidiaries+2].split(' '))) == 2:
+                        if command_file[rows+subsidiaries+2].split(' ')[0] != 'dir':
+                            count = count + int((command_file[rows+subsidiaries+2].split(' '))[0])
                         else:
-                            moderated_name = (command_file[rows+subsidiaries+1].split(' ')[1])[:-1]
+                            moderated_name = (command_file[rows+subsidiaries+2].split(' ')[1])[:-1]
                             count = count + size_of_directories(command_file,moderated_name)
                     else:
                         return count
 
-
-print(size_of_directories(commands,'a'))
+print(size_of_directories(commands,'d'))
 
