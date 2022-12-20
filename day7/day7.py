@@ -56,5 +56,5 @@ if __name__ == '__main__':
     # assert task1(day7_test_input) == 13140
     # assert task2(day7_test_input) == ''
     # print(task1(day7_input))
-    print(size_of_directories(day7_input, 'zgqjbf'))
+    print(search_directory(day7_input, 'zgqjbf'))
 
