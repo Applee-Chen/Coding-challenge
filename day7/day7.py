@@ -45,12 +45,11 @@ def task1(command_file):
             sum_of_required_directories = sum_of_required_directories + size_of_directories(command_file,list_of_directories[directory])
     return sum_of_required_directories
 
-f __name__ == '__main__':
+if __name__ == '__main__':
     day7_test_input = parse_input('test1.txt')
     day7_input = parse_input('day7.txt')
     # print(task1(day7_test_input))
     # assert task1(day7_test_input) == 13140
     # assert task2(day7_test_input) == ''
     # print(task1(day7_input))
-    # print(task2(day7_input))
-    print(search_directory(day7_input, 'dcqf'))
+
