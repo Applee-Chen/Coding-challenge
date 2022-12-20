@@ -40,4 +40,3 @@ def task1(command_file):
             sum_of_required_directories = sum_of_required_directories + size_of_directories(command_file,list_of_directories[directory])
     return sum_of_required_directories
 
-print(task1(commands))
