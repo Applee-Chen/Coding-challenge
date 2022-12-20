@@ -15,18 +15,23 @@ def search_directory(command_file, name_of_directory):
             if command_file[rows].split(' ')[2] == converted_name_of_directory:
                 return (rows + 2)
 
-def size_of_directories(command_file,name_of_directory):
+def size_of_directories(command_file, name_of_directory):
     '''Obtain size of a directory'''
     size = 0
-    for subsidiaries in range(size_of_commands):
-        if int(len(command_file[rows+subsidiaries+2].split(' '))) == 2:
-            if command_file[rows+subsidiaries+2].split(' ')[0] != 'dir':
-                size = size + int((command_file[rows+subsidiaries+2].split(' '))[0])
-            else:
-                moderated_name = (command_file[rows+subsidiaries+2].split(' ')[1])[:-1]
-                size = size + size_of_directories(command_file,moderated_name)
-        else:
+    size_of_commands = int(len(command_file))
+    start_position = search_directory(command_file, name_of_directory)
+    for elements in range(size_of_commands):
+        # If the element is a file, add the sizes directly
+        # If the element is a directory, use recursion 
+        if int(len(command_file[start_position+elements].split(' '))) != 2:
+            # When the list of elements in a directory end, the new command will be: $ cd X, which is of length 3
             return size
+        else:
+            if command_file[start_position+elements].split(' ')[0] != 'dir':
+                size = size + int((command_file[start_position+elements].split(' '))[0])
+            else:
+                moderated_name = (command_file[start_position+elements].split(' ')[1])[:-1]
+                size = size + size_of_directories(command_file, moderated_name)
 
 def task1(command_file):
     '''identify all directories and write them into a list'''
@@ -51,4 +56,5 @@ if __name__ == '__main__':
     # assert task1(day7_test_input) == 13140
     # assert task2(day7_test_input) == ''
     # print(task1(day7_input))
+    print(size_of_directories(day7_input, 'zgqjbf'))
 
