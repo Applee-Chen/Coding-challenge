@@ -15,19 +15,18 @@ def search_directory(command_file, name_of_directory):
             if command_file[rows].split(' ')[2] == converted_name_of_directory:
                 return (rows + 2)
 
-
 def size_of_directories(command_file,name_of_directory):
     '''Obtain size of a directory'''
-    count = 0
+    size = 0
     for subsidiaries in range(size_of_commands):
         if int(len(command_file[rows+subsidiaries+2].split(' '))) == 2:
             if command_file[rows+subsidiaries+2].split(' ')[0] != 'dir':
-                count = count + int((command_file[rows+subsidiaries+2].split(' '))[0])
+                size = size + int((command_file[rows+subsidiaries+2].split(' '))[0])
             else:
                 moderated_name = (command_file[rows+subsidiaries+2].split(' ')[1])[:-1]
-                count = count + size_of_directories(command_file,moderated_name)
+                size = size + size_of_directories(command_file,moderated_name)
         else:
-            return count
+            return size
 
 def task1(command_file):
     '''identify all directories and write them into a list'''
