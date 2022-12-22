@@ -8,11 +8,10 @@ def parse_input(filename):
 def head_movements(instructions, head_coordinate):
     '''Instruct how the head will move according to the file'''
     '''Instructions here should be only in one go: R,L,U,D'''
-    '''Coordinates are lists, [2,3] means it's in the 3rd row and 4th column of the grid'''
     right = [0,1]
     left = [0,-1]
-    up = [-1,0]
-    down = [1,0]
+    up = [1,0]
+    down = [-1,0]
     if instructions == 'R':
         head_coordinate[0] = head_coordinate[0] + right[0]
         head_coordinate[1] = head_coordinate[1] + right[1]
@@ -40,10 +39,10 @@ def tail_movements(head_coordinate, tail_coordinate):
         tail_horizontal = head_horizontal + 1
         tail_vertical = head_vertical
     elif head_vertical - tail_vertical == 2:
-        tail_vertical = head_vertical - 1
+        tail_vertical = head_vertical + 1
         tail_horizontal = head_horizontal
     elif tail_vertical - head_vertical == 2:
-        tail_vertical = head_vertical + 1
+        tail_vertical = head_vertical - 1
         tail_horizontal = head_horizontal
     tail_coordinate[0] = tail_vertical
     tail_coordinate[1] = tail_horizontal
@@ -51,12 +50,12 @@ def tail_movements(head_coordinate, tail_coordinate):
 
 def task1(inputs):
     '''Finish task 1'''
-    head = [4,0]
-    tail = [4,0]
+    head = [0,0]
+    tail = [0,0]
     trace_of_tail = []
-    trace_of_tail.append(tail)
+    trace_of_tail.append([0,0])
     for movements in inputs:
-        frequency = int(movements[2])
+        frequency = int((movements.split(' '))[1])
         instruction = movements[0]
         counter = 0
         while counter < frequency:
