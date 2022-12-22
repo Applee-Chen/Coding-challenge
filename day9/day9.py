@@ -54,21 +54,26 @@ def task1(inputs):
     head = [4,0]
     tail = [4,0]
     trace_of_tail = []
+    trace_of_tail.append(tail)
     for movements in inputs:
         frequency = int(movements[2])
         instruction = movements[0]
-        for i in range(frequency):
+        counter = 0
+        while counter < frequency:
             head = head_movements(instruction, head)
             tail = tail_movements(head, tail)
-            
-
+            counter += 1
+            if tail not in trace_of_tail:
+                trace_of_tail.append(tail)
+    # number_of_positions = int(len(trace_of_tail))
+    return trace_of_tail
 
 
 
 if __name__ == '__main__':
-    # day9_test_input = parse_input('day9_test.txt')
-    # day9_input = parse_input('day9.txt')
-    # print(task1(day9_test_input))
+    day9_test_input = parse_input('day9_test.txt')
+    day9_input = parse_input('day9.txt')
+    print(task1(day9_test_input))
     # assert task1(day9_test_input) == 13140
     # assert task2(day9_test_input) == ''
     # print(task1(day9_input))
