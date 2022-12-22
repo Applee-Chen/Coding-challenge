@@ -1,10 +1,3 @@
-def parse_grid(filename):
-    '''Read the data file into a list of movements'''
-    grid = []
-    with open(filename, 'r', encoding='utf-8') as file:
-        grid = file.readlines()
-    return grid
-
 def parse_input(filename):
     '''Read the data file into a list of movements'''
     movements = []
@@ -12,13 +5,16 @@ def parse_input(filename):
         movements = file.readlines()
     return movements
 
-def head_movements(instructions, grid):
+def movements(instructions, head_coordinate, tail_coordinate):
     '''Instruct how the head will move according to the file'''
+    '''Instruct how the tail will move after the head moves'''
     '''Instructions here should be only in one go: R,L,U,D'''
+    '''Coordinates are lists, [2,3] means it's in the 3rd row and 4th column of the grid'''
     right = [1,0]
     left = [-1,0]
     up = [0,1]
     down = [0,-1]
+    
 
 
 
