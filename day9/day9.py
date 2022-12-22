@@ -9,10 +9,10 @@ def head_movements(instructions, head_coordinate):
     '''Instruct how the head will move according to the file'''
     '''Instructions here should be only in one go: R,L,U,D'''
     '''Coordinates are lists, [2,3] means it's in the 3rd row and 4th column of the grid'''
-    right = [1,0]
-    left = [-1,0]
-    up = [0,1]
-    down = [0,-1]
+    right = [0,1]
+    left = [0,-1]
+    up = [-1,0]
+    down = [1,0]
     if instructions == 'R':
         head_coordinate[0] = head_coordinate[0] + right[0]
         head_coordinate[1] = head_coordinate[1] + right[1]
@@ -63,8 +63,7 @@ def task1(inputs):
             head = head_movements(instruction, head)
             tail = tail_movements(head, tail)
             counter += 1
-            if tail not in trace_of_tail:
-                trace_of_tail.append(tail)
+            trace_of_tail.append(tail)
     # number_of_positions = int(len(trace_of_tail))
     return trace_of_tail
 
