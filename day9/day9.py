@@ -67,11 +67,13 @@ def task1(inputs):
             counter += 1         
             if tail not in list_of_positions:
                 list_of_positions.append(tail)
-    return list_of_positions
+    number_of_positions = len(list_of_positions)
+    return number_of_positions
+    
     
 if __name__ == '__main__':
     day9_test_input = parse_input('day9_test.txt')
-    day9_input = parse_input('day9.txt')
+    day9_input = parse_input('day9.txt')     
     print(task1(day9_test_input))
     # assert task1(day9_test_input) == 13140
     # assert task2(day9_test_input) == ''
