@@ -8,11 +8,11 @@ def parse_input(filename):
 def head_movements(instructions, head_coordinate):
     '''Instruct how the head will move according to the file;
        Instructions should be a single input: R/L/U/D;
-       Coordinate [x,y] means that head is in the (x+1)th row and (y+1)th column'''
-    right = [0,1]
-    left = [0,-1]
-    up = [1,0]
-    down = [-1,0]
+       [x,y] is exactly the 2D coordinates on the Cartesian coordiantes'''
+    right = [1,0]
+    left = [-1,0]
+    up = [0,1]
+    down = [0,-1]
     if instructions == 'R':
         head_coordinate[0] = head_coordinate[0] + right[0]
         head_coordinate[1] = head_coordinate[1] + right[1]
@@ -30,24 +30,24 @@ def head_movements(instructions, head_coordinate):
 def tail_movements(head_coordinate, tail_coordinate):
     '''Instruct how the tail should move considering current position of head
        Tail only mnoves when the head is any direction 2 steps away from it'''
-    head_row = head_coordinate[0]
-    head_column = head_coordinate[1]
-    tail_row = tail_coordinate[0]
-    tail_column = tail_coordinate[1]
+    head_row = head_coordinate[1]
+    head_column = head_coordinate[0]
+    tail_row = tail_coordinate[1]
+    tail_column = tail_coordinate[0]
     if tail_row - head_row == 2:
-        tail_row += -1
+        tail_row = head_row + 1
         tail_column = head_column
     elif head_row - tail_row == 2:
-        tail_row += 1
+        tail_row = head_row - 1
         tail_column = head_column
     elif tail_column - head_column == 2:
         tail_row = head_row
-        tail_column += -1
+        tail_column = head_column + 1
     elif head_column - tail_column == 2:
         tail_row = head_row
-        tail_column += 1
-    tail_coordinate[0] = tail_row
-    tail_coordinate[1] = tail_column
+        tail_column = head_column - 1
+    tail_coordinate[0] = tail_column
+    tail_coordinate[1] = tail_row
     return tail_coordinate
 
 def task1(inputs):
@@ -64,7 +64,7 @@ def task1(inputs):
         while counter < frequency:
             head = head_movements(instruction, head)
             tail = tail_movements(head, tail) 
-            counter += 1         
+            counter += 1        
             if tail not in list_of_positions:
                 list_of_positions.append(tail.copy())
     number_of_positions = len(list_of_positions)
