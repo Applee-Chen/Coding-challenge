@@ -66,7 +66,7 @@ def task1(inputs):
             tail = tail_movements(head, tail) 
             counter += 1         
             if tail not in list_of_positions:
-                list_of_positions.append(tail)
+                list_of_positions.append(tail.copy())
     number_of_positions = len(list_of_positions)
     return number_of_positions
     
@@ -74,7 +74,7 @@ def task1(inputs):
 if __name__ == '__main__':
     day9_test_input = parse_input('day9_test.txt')
     day9_input = parse_input('day9.txt')     
-    print(task1(day9_test_input))
+    print(task1(day9_input))
     # assert task1(day9_test_input) == 13140
     # assert task2(day9_test_input) == ''
     # print(task1(day9_input))
