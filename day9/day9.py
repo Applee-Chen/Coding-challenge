@@ -55,18 +55,21 @@ def task1(inputs):
        Return the number of positions that tail has been to'''
     head = [0,0]
     tail = [0,0]
-    list_of_positions = []
-    list_of_positions.append([0,0])
+    # list_of_positions = []
+    # list_of_positions.append([0,0])
     for line in inputs:
         instruction = line[0]
         frequency = int(line[2])
         counter = 0
+        count = 0
         while counter < frequency:
             head = head_movements(instruction, head)
-            tail = tail_movements(head, tail)
-            if tail not in list_of_positions:
-                list_of_positions.append(tail)
-    return list_of_positions
+            if tail != tail_movements(head, tail):
+                count += 1
+            tail = tail_movements(head, tail)          
+            # if tail not in list_of_positions:
+            #     list_of_positions.append(tail)
+    return count
     
 
 
