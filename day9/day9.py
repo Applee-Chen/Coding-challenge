@@ -55,21 +55,19 @@ def task1(inputs):
        Return the number of positions that tail has been to'''
     head = [0,0]
     tail = [0,0]
-    # list_of_positions = []
-    # list_of_positions.append([0,0])
+    list_of_positions = []
+    list_of_positions.append([0,0])
     for line in inputs:
         instruction = line[0]
         frequency = int(line[2])
         counter = 0
-        count = 1
         while counter < frequency:
             head = head_movements(instruction, head)
-            if tail[0] != (tail_movements(head, tail))[0] or tail[1] != (tail_movements(head, tail))[1]:
-                count += 1
-            tail = tail_movements(head, tail)          
-            # if tail not in list_of_positions:
-            #     list_of_positions.append(tail)
-    return count
+            tail = tail_movements(head, tail) 
+            counter += 1         
+            if tail not in list_of_positions:
+                list_of_positions.append(tail)
+    return list_of_positions
     
 if __name__ == '__main__':
     day9_test_input = parse_input('day9_test.txt')
@@ -78,7 +76,7 @@ if __name__ == '__main__':
     # assert task1(day9_test_input) == 13140
     # assert task2(day9_test_input) == ''
     # print(task1(day9_input))
-    # grid = parse_grid('grid.txt')
+
 
 
 
