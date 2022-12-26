@@ -61,7 +61,7 @@ def task1(inputs):
         instruction = line[0]
         frequency = int(line[2])
         counter = 0
-        count = 0
+        count = 1
         while counter < frequency:
             head = head_movements(instruction, head)
             if tail[0] != (tail_movements(head, tail))[0] or tail[1] != (tail_movements(head, tail))[1]:
@@ -71,8 +71,6 @@ def task1(inputs):
             #     list_of_positions.append(tail)
     return count
     
-
-
 if __name__ == '__main__':
     day9_test_input = parse_input('day9_test.txt')
     day9_input = parse_input('day9.txt')
