@@ -59,7 +59,7 @@ def task1(inputs):
     list_of_positions.append([0,0])
     for line in inputs:
         instruction = line[0]
-        frequency = int(line[2])
+        frequency = int((line.split(' '))[1])
         counter = 0
         while counter < frequency:
             head = head_movements(instruction, head)
