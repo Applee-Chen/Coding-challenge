@@ -64,7 +64,7 @@ def task1(inputs):
         count = 0
         while counter < frequency:
             head = head_movements(instruction, head)
-            if tail != tail_movements(head, tail):
+            if tail[0] != (tail_movements(head, tail))[0] or tail[1] != (tail_movements(head, tail))[1]:
                 count += 1
             tail = tail_movements(head, tail)          
             # if tail not in list_of_positions:
