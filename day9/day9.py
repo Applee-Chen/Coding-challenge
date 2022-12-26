@@ -34,21 +34,50 @@ def tail_movements(head_coordinate, tail_coordinate):
     head_column = head_coordinate[1]
     tail_row = tail_coordinate[0]
     tail_column = tail_coordinate[1]
-    
+    if tail_row - head_row == 2:
+        tail_row += -1
+        tail_column = head_column
+    elif head_row - tail_row == 2:
+        tail_row += 1
+        tail_column = head_column
+    elif tail_column - head_column == 2:
+        tail_row = head_row
+        tail_column += -1
+    elif head_column - tail_column == 2:
+        tail_row = head_row
+        tail_column += 1
+    tail_coordinate[0] = tail_row
+    tail_coordinate[1] = tail_column
+    return tail_coordinate
 
+def task1(inputs):
+    '''Finish task 1
+       Return the number of positions that tail has been to'''
+    head = [0,0]
+    tail = [0,0]
+    list_of_positions = []
+    list_of_positions.append([0,0])
+    for line in inputs:
+        instruction = line[0]
+        frequency = int(line[2])
+        counter = 0
+        while counter < frequency:
+            head = head_movements(instruction, head)
+            tail = tail_movements(head, tail)
+            
 
-# def task1(inputs):
     
 
 
 if __name__ == '__main__':
     day9_test_input = parse_input('day9_test.txt')
     day9_input = parse_input('day9.txt')
-    print(head_movements(day9_test_input[2][0], [4,5]))
+    print(int(day9_input[0][2]) == 1)
     # assert task1(day9_test_input) == 13140
     # assert task2(day9_test_input) == ''
     # print(task1(day9_input))
     # grid = parse_grid('grid.txt')
+
 
 
 
