@@ -6,8 +6,9 @@ def parse_input(filename):
     return movements
 
 def head_movements(instructions, head_coordinate):
-    '''Instruct how the head will move according to the file'''
-    '''Instructions here should be only in one go: R,L,U,D'''
+    '''Instruct how the head will move according to the file;
+       Instructions should be a single input: R/L/U/D;
+       Coordinate [x,y] means that head is in the (x+1)th row and (y+1)th column'''
     right = [0,1]
     left = [0,-1]
     up = [1,0]
@@ -27,51 +28,23 @@ def head_movements(instructions, head_coordinate):
     return head_coordinate
 
 def tail_movements(head_coordinate, tail_coordinate):
-    '''Instruct how the tail should move considering current position of head'''
-    head_horizontal = head_coordinate[1]
-    tail_horizontal = tail_coordinate[1]
-    head_vertical = head_coordinate[0]
-    tail_vertical = tail_coordinate[0]
-    if head_horizontal - tail_horizontal == 2:
-        tail_horizontal = head_horizontal - 1
-        tail_vertical = head_vertical
-    elif tail_horizontal - head_horizontal == 2:
-        tail_horizontal = head_horizontal + 1
-        tail_vertical = head_vertical
-    elif head_vertical - tail_vertical == 2:
-        tail_vertical = head_vertical + 1
-        tail_horizontal = head_horizontal
-    elif tail_vertical - head_vertical == 2:
-        tail_vertical = head_vertical - 1
-        tail_horizontal = head_horizontal
-    tail_coordinate[0] = tail_vertical
-    tail_coordinate[1] = tail_horizontal
-    return tail_coordinate
+    '''Instruct how the tail should move considering current position of head
+       Tail only mnoves when the head is any direction 2 steps away from it'''
+    head_row = head_coordinate[0]
+    head_column = head_coordinate[1]
+    tail_row = tail_coordinate[0]
+    tail_column = tail_coordinate[1]
+    
 
-def task1(inputs):
-    '''Finish task 1'''
-    head = [0,0]
-    tail = [0,0]
-    trace_of_tail = []
-    trace_of_tail.append([0,0])
-    for movements in inputs:
-        frequency = int((movements.split(' '))[1])
-        instruction = movements[0]
-        counter = 0
-        while counter < frequency:
-            head = head_movements(instruction, head)
-            tail = tail_movements(head, tail)
-            counter += 1
-            trace_of_tail.append(tail)
-    # number_of_positions = int(len(trace_of_tail))
-    return trace_of_tail
 
+# def task1(inputs):
+    
 
 
 if __name__ == '__main__':
     day9_test_input = parse_input('day9_test.txt')
     day9_input = parse_input('day9.txt')
-    print(task1(day9_test_input))
+    print(head_movements(day9_test_input[2][0], [4,5]))
     # assert task1(day9_test_input) == 13140
     # assert task2(day9_test_input) == ''
     # print(task1(day9_input))
