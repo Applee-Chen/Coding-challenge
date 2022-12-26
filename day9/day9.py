@@ -64,15 +64,16 @@ def task1(inputs):
         while counter < frequency:
             head = head_movements(instruction, head)
             tail = tail_movements(head, tail)
-            
-
+            if tail not in list_of_positions:
+                list_of_positions.append(tail)
+    return list_of_positions
     
 
 
 if __name__ == '__main__':
     day9_test_input = parse_input('day9_test.txt')
     day9_input = parse_input('day9.txt')
-    print(int(day9_input[0][2]) == 1)
+    print(task1(day9_test_input))
     # assert task1(day9_test_input) == 13140
     # assert task2(day9_test_input) == ''
     # print(task1(day9_input))
